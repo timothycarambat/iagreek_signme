@@ -13,7 +13,21 @@
             <br><br>
           @endif
           {!! $document->formatDocumentText(Auth::user()) !!}
+
+					<hr>
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<a href="/sign/request/{{$sign_request->id}}/doc/{{$document->id}}/submit">
+								<div class="btn btn-fill btn-success">
+									Sign Document As {{Auth::user()->name}}
+								</div>
+							</a>
+
+						</div>
+					</div>
+
         </div>
+
       </div>
   </div>
 @endsection

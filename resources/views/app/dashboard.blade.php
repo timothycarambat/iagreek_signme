@@ -38,9 +38,13 @@
 															</td>
 														</tr>
 								          @endforeach
-													<tr>
-														<td style="font-size:24px;" colspan="8" class="text-center"><b>Need to Mark for Approval</b></td>
-													</tr>
+
+													@if( count($approvals) > 0)
+														<tr>
+															<td style="font-size:24px;" colspan="8" class="text-center"><b>Need to Mark for Approval</b></td>
+														</tr>
+													@endif
+
 
 													@foreach($approvals as $req)
 														<tr>
