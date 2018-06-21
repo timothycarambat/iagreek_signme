@@ -66,13 +66,6 @@
 	src="https://code.jquery.com/jquery-3.2.1.min.js"
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	crossorigin="anonymous"></script>
-	<script src="https://js.stripe.com/v3/"></script>
-	<script type="text/javascript">
-	  window.pkeys = {
-	    Stripe: "{{$_ENV['STRIPE_KEY']}}",
-	    Places: "{{$_ENV['GOOGLE_PLACES_API']}}"
-	  }
-	</script>
 	<script src='{{asset("js/app.js")}}'></script>
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Session;
 
 class ForgotPasswordController extends Controller
 {
@@ -28,5 +29,11 @@ class ForgotPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    //override default password link response
+    public function sendResetLinkResponse($response) {
+       Session::flash('success','Check your email for your password reset email!');
+       return redirect()->route('login');
     }
 }

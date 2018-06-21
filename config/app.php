@@ -178,8 +178,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
-        Laravel\Cashier\CashierServiceProvider::class,
-
     ],
 
     /*

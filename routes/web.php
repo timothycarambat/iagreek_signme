@@ -14,6 +14,7 @@ Auth::routes();
 
 //Base View Routes
 Route::get('/',['as'=>'login','uses'=>"PagesController@home"]);
+Route::get('/forgot', "PagesController@forgot");
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/dashboard', 'PagesController@dashboard')->middleware('auth');
