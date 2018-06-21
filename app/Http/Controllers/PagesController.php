@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\SignRequest;
+use App\Document;
 
 class PagesController extends Controller
 {
@@ -26,14 +27,24 @@ class PagesController extends Controller
     }
 
     public function dashboard(){
-
-
       return view('app.dashboard',
       [
         'title'=>'Pending Signature Requests',
         'view'=>'dashboard',
         'sign_requests'=> Auth::user()->sign_requests,
         'approvals' => SignRequest::getRequestWhereUserIsAdditional(),
+      ]);
+    }
+
+    public function sign($sign_request_id, $doc_id){
+      $document = Document::where('id', (integer)$doc_id)->get()[0];
+      return view('app.sign',
+      [
+        'title'=>'Sign Document :: '.$document->name,
+        'view'=>'sign',
+        'document' => $document,
+        'sign_request' => SignRequest::where('id', (integer)$sign_request_id)->get()[0],
+        'letterhead' => Auth::user()->org_admin->letterhead,
       ]);
     }
 
