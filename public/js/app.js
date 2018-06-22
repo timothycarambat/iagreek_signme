@@ -11033,8 +11033,11 @@ __webpack_require__(40);
 __webpack_require__(41);
 __webpack_require__(42);
 __webpack_require__(43);
+__webpack_require__(50);
 
 window.view = $('meta[name=view]').attr("content");
+
+__webpack_require__(49);
 
 /***/ }),
 /* 10 */
@@ -37778,6 +37781,48 @@ function stripeTokenHandler(token, form) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
+/***/ (function(module, exports) {
+
+$(function () {
+  var errors = $('input[data-error]');
+  errors.each(function (_, el) {
+    var msg = $(el).val();
+    Notify(msg, 'danger');
+  });
+
+  var success = $('input[data-success]');
+  success.each(function (_, el) {
+    var msg = $(el).val();
+    Notify(msg, 'success');
+  });
+
+  var info = $('input[data-info]');
+  info.each(function (_, el) {
+    var msg = $(el).val();
+    Notify(msg, 'info');
+  });
+});
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+Notify = function Notify(text, level) {
+  $.notify({
+    // options
+    message: text
+  }, {
+    // settings
+    type: level
+  });
+};
 
 /***/ })
 /******/ ]);

@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
-        // Elibyy\TCPDF\ServiceProvider::class,
+        Snowfire\Beautymail\BeautymailServiceProvider::class,
     ],
 
     /*

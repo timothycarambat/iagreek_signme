@@ -31,7 +31,7 @@ class PagesController extends Controller
       [
         'title'=>'Pending Signature Requests',
         'view'=>'dashboard',
-        'sign_requests'=> Auth::user()->sign_requests,
+        'sign_requests'=> Auth::user()->sign_requests->where('completed', false),
         'approvals' => SignRequest::getRequestWhereUserIsAdditional(),
       ]);
     }

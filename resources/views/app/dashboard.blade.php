@@ -6,7 +6,7 @@
 					<div class="row">
 						<div class="col-md-12">
 
-							@if(count($sign_requests) > 0)
+							@if(count($sign_requests) > 0 || count($approvals) > 0)
 								<div class="card">
 								    <div class="header">
 								        <h4 class="title">Pending Signature Requests</h4>

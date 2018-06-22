@@ -12,4 +12,5 @@ class Document extends Model
       $content = preg_replace("<<%DATE%>>", \Carbon\Carbon::now()->toFormattedDateString(), $content);
       return $content;
     }
+
 }

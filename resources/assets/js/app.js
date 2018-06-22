@@ -14,6 +14,8 @@ require('./includes/chartist.min');
 require('./includes/demo');
 require('./includes/paper-dashboard');
 require('./stripe_helper');
-
+require('./includes/notify');
 
 window.view = $('meta[name=view]').attr("content");
+
+require('./disp_errors');
