@@ -52,7 +52,7 @@
 															<td style='font-size:20px' class="text-center" >{{$req->campaign->created_at->diffForHumans()}}</td>
 															<td style='font-size:20px' class="text-center" >{{\Carbon\Carbon::parse($req->campaign->expiry)->diffForHumans()}}</td>
 															<td style='font-size:20px' class="text-center" >
-																<a href="/sign/approve/{{$req->id}}/doc/{{$req->campaign->document_id}}">
+																<a href="/approve/request/{{$req->id}}/doc/{{$req->campaign->document_id}}">
 																	<div class="btn btn-fill btn-primary">
 																		Sign and Approve
 																	</div>

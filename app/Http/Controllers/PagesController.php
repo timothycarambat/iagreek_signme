@@ -48,4 +48,16 @@ class PagesController extends Controller
       ]);
     }
 
+    public function approve($sign_request_id, $doc_id){
+      $document = Document::where('id', (integer)$doc_id)->get()[0];
+      return view('app.approve',
+      [
+        'title'=>'Approve Document :: '.$document->name,
+        'view'=>'approve',
+        'document' => $document,
+        'sign_request' => SignRequest::where('id', (integer)$sign_request_id)->get()[0],
+        'letterhead' => Auth::user()->org_admin->letterhead,
+      ]);
+    }
+
 }

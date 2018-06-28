@@ -63,9 +63,15 @@ class SignRequest extends Model
     $additonals = array_values($additonals);
     $completed = (array)array_pop($additonals);
     $additonals = array_filter($additonals);
+    $diff = array_values(array_diff($additonals,$completed));
 
-    $uid = array_diff($additonals,$completed)[0];
-    return User::where('id', (integer)$uid)->get()[0];
+    if(!empty($diff)){
+      $uid = $diff[0];
+      return User::where('id', (integer)$uid)->get()[0];
+    }else{
+      return null;
+    }
+
   }
 
   public function alertNextSigner($user){

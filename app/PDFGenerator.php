@@ -30,7 +30,7 @@ class PDF extends TCPDF {
 
 class PDFGenerator extends Model
 {
-    public static function makePDF($campaign, $document){
+    public static function makePDF($campaign, $document, $sign_request){
       $doc_name = $campaign->name.' - '.Auth::user()->name." ".Carbon::now()->format('m-d-y').'.pdf';
       $pdf = new PDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
       $pdf->SetCreator($_ENV['APP_NAME']);
@@ -46,7 +46,7 @@ class PDFGenerator extends Model
 
       $pdf->AddPage();
       $pdf->Ln(8);
-      $pdf->WriteHTML($document->formatDocumentText(Auth::user()));
+      $pdf->WriteHTML($document->finishDocument(Auth::user(), $sign_request));
 
       //output file to storage director
       $pdf->Output(__DIR__."/../storage/app/$doc_name",'F');
