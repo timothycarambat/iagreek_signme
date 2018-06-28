@@ -22,6 +22,12 @@ Tip 2: you can change the color of the active button using the data-active-color
                     <p>Requests</p>
                 </a>
             </li>
+            <li class="{{ Request::is('history') ? 'active':null }}">
+                <a href="/history">
+                    <i class="fas fa-history"></i>
+                    <p>Signed Requests</p>
+                </a>
+            </li>
         </ul>
   </div>
 </div>

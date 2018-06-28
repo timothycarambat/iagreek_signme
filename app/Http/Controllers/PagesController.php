@@ -36,6 +36,15 @@ class PagesController extends Controller
       ]);
     }
 
+    public function history(){
+      return view('app.history',
+      [
+        'title'=>'Past Signatures',
+        'view'=>'history',
+        'sign_requests'=> Auth::user()->sign_requests->where('status', true),
+      ]);
+    }
+
     public function sign($sign_request_id, $doc_id){
       $document = Document::where('id', (integer)$doc_id)->get()[0];
       return view('app.sign',
