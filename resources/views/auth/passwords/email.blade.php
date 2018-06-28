@@ -30,7 +30,7 @@
 			    <h2 class="info">Forgot Password?</h2>
 
 					{{Form::label('email', 'Email:',['style'=>'font-weight:800'])}}
-          {{Form::email('email',null,['placeholder'=>'alpha@betagamma.org','required' => 'required']) }}
+          {{Form::email('email',request()->email,['placeholder'=>'alpha@betagamma.org','required' => 'required']) }}
 
 			    <div class="allsub">
 						{{Form::submit('Send Reset Email',['class'=>'submit'])}}

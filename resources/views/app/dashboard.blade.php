@@ -6,7 +6,7 @@
 					<div class="row">
 						<div class="col-md-12">
 
-							@if(count($sign_requests) > 0)
+							@if(count($sign_requests) > 0 || count($approvals) > 0)
 								<div class="card">
 								    <div class="header">
 								        <h4 class="title">Pending Signature Requests</h4>
@@ -38,9 +38,13 @@
 															</td>
 														</tr>
 								          @endforeach
-													<tr>
-														<td style="font-size:24px;" colspan="8" class="text-center"><b>Need to Mark for Approval</b></td>
-													</tr>
+
+													@if( count($approvals) > 0)
+														<tr>
+															<td style="font-size:24px;" colspan="8" class="text-center"><b>Need to Mark for Approval</b></td>
+														</tr>
+													@endif
+
 
 													@foreach($approvals as $req)
 														<tr>
@@ -48,7 +52,7 @@
 															<td style='font-size:20px' class="text-center" >{{$req->campaign->created_at->diffForHumans()}}</td>
 															<td style='font-size:20px' class="text-center" >{{\Carbon\Carbon::parse($req->campaign->expiry)->diffForHumans()}}</td>
 															<td style='font-size:20px' class="text-center" >
-																<a href="/sign/approve/{{$req->id}}/doc/{{$req->campaign->document_id}}">
+																<a href="/approve/request/{{$req->id}}/doc/{{$req->campaign->document_id}}">
 																	<div class="btn btn-fill btn-primary">
 																		Sign and Approve
 																	</div>

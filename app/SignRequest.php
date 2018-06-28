@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Auth;
 
 use App\Campaign;
+use App\User;
 
 class SignRequest extends Model
 {
@@ -42,6 +43,46 @@ class SignRequest extends Model
     }
 
     return $additional_requests;
+  }
+
+  public function hasAdditionals(){
+    $additonals = (array)json_decode($this->additionals);
+    $additonals = array_values($additonals);
+    $completed = (array)array_pop($additonals);
+    $additonals = array_filter($additonals);
+
+    if( empty(array_diff($additonals,$completed)) ){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  public function getNextAdditional(){
+    $additonals = (array)json_decode($this->additionals);
+    $additonals = array_values($additonals);
+    $completed = (array)array_pop($additonals);
+    $additonals = array_filter($additonals);
+    $diff = array_values(array_diff($additonals,$completed));
+
+    if(!empty($diff)){
+      $uid = $diff[0];
+      return User::where('id', (integer)$uid)->get()[0];
+    }else{
+      return null;
+    }
+
+  }
+
+  public function alertNextSigner($user){
+    $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+    $beautymail->send('emails.alert_next_signer',
+      ['model'=>$user, 'org_name'=>Auth::user()->org_name],
+      function($message) use($user) {
+        $message
+            ->to($user->email)
+            ->subject("You Have A Document To Approve!");
+    });
   }
 
   public function member() {
