@@ -45,6 +45,7 @@ class PDFGenerator extends Model
       $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
       $pdf->AddPage();
+      $pdf->Ln(8);
       $pdf->WriteHTML($document->formatDocumentText(Auth::user()));
 
       //output file to storage director
