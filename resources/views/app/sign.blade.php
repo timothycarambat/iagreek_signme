@@ -12,7 +12,7 @@
             </div>
             <br><br>
           @endif
-          {!! $document->formatDocumentText(Auth::user()) !!}
+          {!! $document->formatDocumentText($sign_request) !!}
 
 					<hr>
 					<div class="row">
