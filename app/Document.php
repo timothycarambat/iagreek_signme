@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
+    public function signPrimaryDocumentText($sign_request){
+      $user = User::where('id', (integer)$sign_request->member_id )->get()[0];
+      $content = htmlspecialchars_decode($this->content);
+      $content = preg_replace("<<%NAME%>>", ucwords($user->name), $content);
+      $content = preg_replace("<<%DATE%>>", \Carbon\Carbon::now()->toFormattedDateString(), $content);
+
+      $user = User::where('id', (integer)$sign_request->member_id )->get()[0];
+      $content .= "<br><br><p>Digitally Signed By: <u>".($user->name)."</u></p>";
+      $content .= $this->appendApprovals($sign_request);
+      return $content;
+    }
+
     public function formatDocumentText($sign_request){
       $user = User::where('id', (integer)$sign_request->member_id )->get()[0];
       $content = htmlspecialchars_decode($this->content);

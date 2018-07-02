@@ -46,7 +46,7 @@ class PDFGenerator extends Model
 
       $pdf->AddPage();
       $pdf->Ln(8);
-      $pdf->WriteHTML($document->formatDocumentText($sign_request));
+      $pdf->WriteHTML($document->signPrimaryDocumentText($sign_request));
 
       //output file to storage director
       $pdf->Output(__DIR__."/../storage/app/$doc_name",'F');
