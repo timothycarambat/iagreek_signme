@@ -16,7 +16,9 @@
   			 <h3>Hey {{ucwords($model->name)}}!</h3>
 				 <p>We wanted to let you know that there a document that has been signed and needs your additional approval!
            <br>
-           You can do this from your phone or computer, whichever is easiet. Onc click and done!
+           You can do this from your phone or computer, whichever is easiet. One click and done!
+					 <br>
+					 <a href="{{$_ENV['APP_URL']}}/">Click Here to Sign In</a>
          </p>
 				 <br>
 				 <p>Best, <br> IAGREEK Support Team </p>
