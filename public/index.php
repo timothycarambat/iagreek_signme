@@ -19,7 +19,13 @@
 |
 */
 
-require __DIR__.'/../bootstrap/autoload.php';
+$in_production  = is_dir(__DIR__.'/../_iagreeksignme');
+
+if($in_production){
+  require __DIR__.'/../_iagreeksignme/bootstrap/autoload.php';
+}else{
+  require __DIR__.'/../bootstrap/autoload.php';
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +39,11 @@ require __DIR__.'/../bootstrap/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+if($in_production){
+  $app = require_once __DIR__.'/../_iagreeksignme/bootstrap/app.php';
+}else{
+  $app = require_once __DIR__.'/../bootstrap/app.php';
+}
 
 /*
 |--------------------------------------------------------------------------
