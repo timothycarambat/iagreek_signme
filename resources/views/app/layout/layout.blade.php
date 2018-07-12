@@ -49,29 +49,29 @@
 
         <footer class="footer">
             <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
+							<nav class="pull-left">
+									<ul>
 
-                        <li>
-                            <a href="{{$_ENV['ALT_URL']}}">
-                               IAGREEK
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               FAQ
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Support
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i>
-                </div>
+											<li>
+													<a href="{{$_ENV['ALT_URL']}}">
+														 IAGREEK
+													</a>
+											</li>
+											<li>
+													<a href="{{$_ENV['ALT_URL']}}/getting_started">
+														 Getting Started
+													</a>
+											</li>
+											<li>
+													<a href="mailto:support@iagreek.com">
+															Support
+													</a>
+											</li>
+									</ul>
+							</nav>
+							<div class="copyright pull-right">
+									&copy; <script>document.write(new Date().getFullYear())</script>, IAGREEK
+							</div>
             </div>
         </footer>
     </div>
